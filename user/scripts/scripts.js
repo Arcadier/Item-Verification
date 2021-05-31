@@ -16,6 +16,9 @@
         if($("body").hasClass("seller-upload-page")){
             var flag = get_ver("create");
             a();
+            $(".item-upload-category-container").click(function(){
+                a();
+            });
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
                 if (options.type.toLowerCase() === "post" && options.url.toLowerCase().indexOf('/user/item/createitems') >= 0) {
                     if(flag == "false"){
@@ -39,6 +42,9 @@
             var flag = get_ver("edit");
             console.log("get_ver(\"edit\") value: " + flag);
             a();
+            $(".item-upload-category-container").click(function(){
+                a();
+            });
             var itemID = $("#itemGuid").val();
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
                 if(flag == "false"){
@@ -66,7 +72,7 @@
                     "Content-Type": "application/json",
                     "Authorization": "Bearer " + token
                 },
-                "data": JSON.stringify({"IsAvailable": false, "IsVisibleToCustomer": false}),
+                "data": JSON.stringify({"IsAvailable": false, "IsVisibleToCustomer": false, "CustomFields": [{ "Code": "Vetting-Verified", "Values": ["Unverified"]}]}),
                 success: function(response){
                     status = true;
                 }
@@ -87,7 +93,7 @@
                     "Content-Type": "application/json",
                     "Authorization": "Bearer " + token
                 },
-                "data": JSON.stringify({"IsAvailable": false, "IsVisibleToCustomer": false}),
+                "data": JSON.stringify({"IsAvailable": false, "IsVisibleToCustomer": false, "CustomFields": [{ "Code": "Vetting-Verified", "Values": ["Unverified"]}]}),
                 success: function(response){
                     status = true;
                 }

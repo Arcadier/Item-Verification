@@ -49,5 +49,5 @@ Once toggled on, the additional settings can be configured depending on the mark
 
 ## FAQ
 * Toggling the plug-in off without setting the additional settings to `No` will still turn off the whole vetting/verification feature.
-* Toggling the plug-in off while having items pending verification will not automatically made purchasable.
+* Toggling the plug-in off while having items pending verification will not automatically make them purchasable.
 * 

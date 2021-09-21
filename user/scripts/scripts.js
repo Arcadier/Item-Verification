@@ -13,7 +13,7 @@
         var edit = "/user/item/edit";
         var list = "/user/item/list";
 
-        if($("body").hasClass("seller-upload-page")){
+        if($("body").hasClass("seller-upload-page") || $("body").hasClass("item-upload")){
             var flag = get_ver("create");
             a();
             $(".item-upload-category-container").click(function(){
@@ -21,6 +21,7 @@
             });
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
                 if (options.type.toLowerCase() === "post" && options.url.toLowerCase().indexOf('/user/item/createitems') >= 0) {
+                    console.log(options.url);
                     if(flag == "false"){
                         console.log("getver(\"create\") value: " + flag);
                         let success = options.success;
@@ -49,6 +50,7 @@
             $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
                 if(flag == "false"){
                     if (options.type.toLowerCase() === "post" && options.url.toLowerCase().indexOf('/user/item/updateitems') >= 0) {
+                        console.log(options.url);
                         let success = options.success;
                         options.success = function(data, textStatus, jqXHR) {
                                 console.log(data);
@@ -143,6 +145,7 @@
                             }
                         }
                     }
+                    clearInterval(inte);
                 }
             }, 500);
         }
